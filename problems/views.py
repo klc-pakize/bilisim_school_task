@@ -38,13 +38,25 @@ class ProblemView(ModelViewSet):
             self.perform_update(serializer)
 
             if getattr(instance, '_prefetched_objects_cache', None):
-                # If 'prefetch_related' has been applied to a queryset, we need to
-                # forcibly invalidate the prefetch cache on the instance.
                 instance._prefetched_objects_cache = {}
+
         except ValueError as e:
             error_message = {"input": str(e)}
             return Response(error_message, status=status.HTTP_400_BAD_REQUEST)
+        
         return Response(serializer.data)
 
     def perform_update(self, serializer):
         serializer.save()
+
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        message = {
+            "message":f"The problem named {instance.title} has been deleted"
+        }
+        return Response(message,status=status.HTTP_204_NO_CONTENT)
+
+    def perform_destroy(self, instance):
+        instance.delete()

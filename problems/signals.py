@@ -10,19 +10,19 @@ def colcature_expected_output(sender, instance, **kwargs):
         instance.expected_output = "Hello World"
 
     elif instance.title == "Arithmetic Operators - Sum":
-        a = instance.input
-        b = a.split(",")
+        instance_input = instance.input
+        instance_input_list = instance_input.split(",")
         sum = 0
-        for i in b:
-            sum += int(i)   
+        for input in instance_input_list:
+            sum += int(input)   
         instance.expected_output = sum
 
     elif instance.title == "Loops":
-        liste = []
+        list_numbers = []
         numbers = int(instance.input)
         for i in range(numbers):
-            liste.append(i ** 2)
-            str_liste = str(liste)
+            list_numbers.append(i ** 2)
+            str_liste = str(list_numbers)
             
         instance.expected_output = str_liste[1:-1]
         

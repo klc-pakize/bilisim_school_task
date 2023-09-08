@@ -7,6 +7,4 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register("", ProblemView)
 
-urlpatterns = [
-    
-] + router.urls
+urlpatterns = [] + router.urls

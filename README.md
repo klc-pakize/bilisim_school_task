@@ -1,7 +1,7 @@
 <h1>Bilişim School Problem API</h1>
 
 <h3>Proje Tanımı</h3>
-<p>Proje, kullanıcıların çeşitli sorunlarını tanımlayan ve bu sorunları çözmek için girdi ve beklenen çıktı sağlayan bir REST API oluşturur. Her sorun, bir başlık, açıklama, puan, zorluk seviyesi, kullanılan dil, girdi ve beklenen çıktı içerir.</p>
+<p>Proje, kullanıcıların çeşitli sorunlarını tanımlayan ve bu sorunları çözmek için girdi ve beklenen çıktı sağlayan bir REST API oluşturur. Her problem,  title, problem, point, level, language, input ve expected_output içerir.</p>
 
 <h4>Bileşenler</h4>
 <p>models.py dosyası, projenin veri modelini tanımlar. Aşağıdaki veri modeli kullanılır:</p>
@@ -37,3 +37,5 @@
    <li> $ python manage.py migrate</li>
    <li> $ python manage.py runserver</li>
 </ul>
+
+<p>Projenin Postman Collection’u için <a href="https://documenter.getpostman.com/view/23604502/2s9YC1WE6K">buraya tıklayınız.</a></p>
