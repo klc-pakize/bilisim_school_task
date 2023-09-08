@@ -1,22 +1,32 @@
-## How To Use
+<h1>Bilişim School Problem API</h1>
 
-To clone and run this application, you'll need [Git](https://git-scm.com)
+<h3>Proje Tanımı</h3>
+<p>Proje, kullanıcıların çeşitli sorunlarını tanımlayan ve bu sorunları çözmek için girdi ve beklenen çıktı sağlayan bir REST API oluşturur. Her sorun, bir başlık, açıklama, puan, zorluk seviyesi, kullanılan dil, girdi ve beklenen çıktı içerir.</p>
 
-```bash
+<h4>Bileşenler</h4>
+<p>models.py dosyası, projenin veri modelini tanımlar. Aşağıdaki veri modeli kullanılır:</p>
+<p>Problem: Sorunları temsil eden bir model. Bu model, title, problem, point, level, language, input ve expected_output alanlarına sahiptir.</p>
 
-# Clone this repository
-$ git clone https://github.com/your-user-name/your-project-name
+<p>serializers.py dosyası, Django Rest Framework (DRF) kullanarak veri modelini API'ye uygun JSON formatına dönüştürmek için kullanılan serializer'ları içerir. Bu proje için ProblemSerializer kullanılır.</p>
 
-# Install dependencies
-    $ python -m venv env
-    > env/Scripts/activate (for win OS)
-    $ source env/bin/activate (for macOs/linux OS)
-    $ pip install -r requirements.txt
+<p>signals.py dosyası, Django sinyallerini kullanarak sorunların beklenen çıktılarını otomatik olarak hesaplar. Bu dosya, pre_save sinyali kullanır ve her bir problem öğesinin beklenen çıktısını hesaplar.</p>
 
-# Edit .backend.env to .env
+<p>views.py dosyası, API görünümlerini tanımlar. Bu dosya, ProblemView sınıfını içerir ve RESTful API'yi işler. Yeni sorunlar oluşturabilir, mevcut sorunları güncelleyebilir ve silebilirsiniz.</p>
 
-# Add SECRET_KEY in .env file
+<h2>Proje başlatmak için aşağıdaki adımları izleyin:</h2>
 
-# Run the app
-    $ python manage.py runserver
-```
+<p>$ git clone https://github.com/klc-pakize/bilisim_school_task.git</p>
+
+<ul>Proje dizininde sanal bir çevre oluşturun ve etkinleştirin:</ul>
+    <li>$ python -m venv env</li>
+    <li>$ env/Scripts/activate (for win OS)</li>
+    <li>$ source env/bin/activate (for macOs/linux OS)</li>
+
+<ul>Gerekli bağımlılıkları yükleyin:</ul> 
+   <li>$ pip install -r requirements.txt</li>
+
+<ul>.backend.env dosyasını .env olarak düzenleyin</ul>
+<ul>.env dosyasına SECRET_KEY'i ekleyin</ul>
+
+<ul> Veritabanını oluşturun ve uygulamayı başlatın:</ul> 
+   <li> $ python manage.py runserver</li>
