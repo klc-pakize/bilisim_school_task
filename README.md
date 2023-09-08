@@ -17,16 +17,22 @@
 
 <p>$ git clone https://github.com/klc-pakize/bilisim_school_task.git</p>
 
-<ul>Proje dizininde sanal bir çevre oluşturun ve etkinleştirin:</ul>
+<p>Proje dizininde sanal bir çevre oluşturun ve etkinleştirin:</p>
+<ul>
     <li>$ python -m venv env</li>
     <li>$ env/Scripts/activate (for win OS)</li>
     <li>$ source env/bin/activate (for macOs/linux OS)</li>
+</ul>
 
-<ul>Gerekli bağımlılıkları yükleyin:</ul> 
+<p>Gerekli bağımlılıkları yükleyin:</p>
+<ul> 
    <li>$ pip install -r requirements.txt</li>
+</ul>
 
-<ul>.backend.env dosyasını .env olarak düzenleyin</ul>
-<ul>.env dosyasına SECRET_KEY'i ekleyin</ul>
+<p>.backend.env dosyasını .env olarak düzenleyin</p>
+<p>.env dosyasına SECRET_KEY'i ekleyin</p>
 
-<ul> Veritabanını oluşturun ve uygulamayı başlatın:</ul> 
+<p> Veritabanını oluşturun ve uygulamayı başlatın:</p> 
+<ul> 
    <li> $ python manage.py runserver</li>
+</ul>
