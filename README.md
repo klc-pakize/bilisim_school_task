@@ -34,5 +34,6 @@
 
 <p>Veritabanını oluşturun ve uygulamayı başlatın:</p> 
 <ul> 
+   <li> $ python manage.py migrate</li>
    <li> $ python manage.py runserver</li>
 </ul>
