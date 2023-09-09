@@ -13,12 +13,15 @@ class ProblemView(ModelViewSet):
     queryset = Problem.objects.all()
     serializer_class = ProblemSerializer
 
+    # Yeni bir problem oluşturmak için kullanılan fonksiyon.
     def create(self, request, *args, **kwargs):
         try:
             serializer = self.get_serializer(data=request.data)
             serializer.is_valid(raise_exception=True)
             self.perform_create(serializer)
         except ValueError as e:
+            # Eğer kullanıcı sayısal olmayan bir girdi-input kullanırsa, ValueError üretir ve
+            # bu hatayı yakalar. Daha sonra kullanıcıya bir hata mesajı döner.
             error_message = {"input": str(e)}
             return Response(error_message, status=status.HTTP_400_BAD_REQUEST)
 
@@ -28,7 +31,7 @@ class ProblemView(ModelViewSet):
     def perform_create(self, serializer):
         serializer.save()
 
-
+    # Var olan bir problemi güncellemek için kullanılan fonksiyon.
     def update(self, request, *args, **kwargs):
         try:
             partial = kwargs.pop('partial', False)
@@ -41,6 +44,8 @@ class ProblemView(ModelViewSet):
                 instance._prefetched_objects_cache = {}
 
         except ValueError as e:
+            # Eğer kullanıcı sayısal olmayan bir girdi-input kullanırsa, ValueError üretir ve
+            # bu hatayı yakalar. Daha sonra kullanıcıya bir hata mesajı döner.
             error_message = {"input": str(e)}
             return Response(error_message, status=status.HTTP_400_BAD_REQUEST)
         
@@ -49,10 +54,12 @@ class ProblemView(ModelViewSet):
     def perform_update(self, serializer):
         serializer.save()
 
-
+    # Bir problemi silmek için kullanılan fonksiyon.
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
         self.perform_destroy(instance)
+        
+        # İlgili problem silindiği zaman, kullanıcıya silenen problemin silindiğine dair cevap-response döner.
         message = {
             "message":f"The problem named {instance.title} has been deleted"
         }
